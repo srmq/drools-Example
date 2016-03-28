@@ -24,3 +24,6 @@ The examples are
 	3. com.anil.drools.service.FireAlarmServiceWithChangeSet
 		a. The example is same as the "FireAlarmService" example except that it assumes that the rules are defined in the Guvnor rule repository.
 		b. Guvnor business rule management system is outside the scope of this demo. The example is added for reference only.
+
+            
+Should use JANINO compiler to run. Add -Ddrools.dialect.java.compiler=JANINO to JVM System properties
