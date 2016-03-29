@@ -30,20 +30,27 @@
             <param name="ConversionPattern" value="%d{ABSOLUTE} | %-5p | %-10t | %-24.24c{1} | %-30.30C %4L | %m%n"/>
         </layout>
     </appender>
+    
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="threshold" value="DEBUG"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ABSOLUTE} | %-5p | %-10t | %-24.24c{1} | %-30.30C %4L | %m%n"/>
+        </layout>
+    </appender>
    
     <logger name="com.anil" additivity="false"> 
          <level value="DEBUG"/> 
-         <appender-ref ref="FILE"/>  
+         <appender-ref ref="CONSOLE"/>  
     </logger> 
 
 	<logger name="org.drools" additivity="false"> 
          <level value="TRACE"/> 
-         <appender-ref ref="FILE"/> 
+         <appender-ref ref="CONSOLE"/> 
     </logger> 
     
     <root>
         <level value="TRACE"/>
-        <appender-ref ref="FILE"/>
+        <appender-ref ref="CONSOLE"/>
     </root>
 
 </log4j:configuration>
