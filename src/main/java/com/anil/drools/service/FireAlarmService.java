@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.drools.KnowledgeBase;
@@ -11,6 +12,7 @@ import org.drools.KnowledgeBaseFactory;
 import org.drools.builder.KnowledgeBuilder;
 import org.drools.builder.KnowledgeBuilderFactory;
 import org.drools.builder.ResourceType;
+import org.drools.compiler.PackageBuilderConfiguration;
 import org.drools.io.ResourceFactory;
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.drools.runtime.rule.FactHandle;
@@ -25,8 +27,13 @@ public class FireAlarmService {
 			.getName());
 
 	public void execute() {
+		Properties properties = new Properties();
+		properties.setProperty( "drools.dialect.java.compiler.lnglevel","1.6" );
+		PackageBuilderConfiguration cfg =
+		new PackageBuilderConfiguration( properties );
+
 		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory
-				.newKnowledgeBuilder();
+				.newKnowledgeBuilder(cfg);
 
 		/*
 		 * The KnowlegeBase is a repository of all the application's knowledge
